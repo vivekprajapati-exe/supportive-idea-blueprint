@@ -129,8 +129,14 @@ const Index = () => {
           </div>
         </section>
         
+        {/* Glass effect transition element between sections */}
+        <div className="relative h-40 md:h-60 mb-16">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-transparent z-10" />
+          <div className="absolute inset-0 backdrop-blur-[10px] bg-black/30 rounded-t-[40px] transform translate-y-1/3 z-0" />
+        </div>
+        
         {/* About Section */}
-        <section id="about" className="mb-32 max-w-3xl">
+        <section id="about" className="relative z-20 mb-32 max-w-3xl backdrop-blur-sm bg-black/40 p-8 rounded-lg">
           <h2 className="text-2xl mb-10 opacity-50">About</h2>
           <p className="text-lg leading-relaxed mb-8">
             I am a video editor and motion designer with over 8 years of experience creating compelling visual content for brands and agencies worldwide. My work focuses on storytelling through creative cutting, dynamic motion design, and visual effects.
@@ -140,8 +146,14 @@ const Index = () => {
           </p>
         </section>
         
+        {/* Glass effect transition element before contact */}
+        <div className="relative h-40 md:h-60 mb-16">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-transparent z-10" />
+          <div className="absolute inset-0 backdrop-blur-[10px] bg-black/30 rounded-t-[40px] transform translate-y-1/3 z-0" />
+        </div>
+        
         {/* Contact Section */}
-        <section id="contact">
+        <section id="contact" className="relative z-20 backdrop-blur-sm bg-black/40 p-8 rounded-lg">
           <h2 className="text-2xl mb-10 opacity-50">Contact</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
             <div>
@@ -160,8 +172,8 @@ const Index = () => {
         </section>
       </main>
       
-      {/* Footer */}
-      <footer className="p-8 text-sm opacity-50 border-t border-zinc-800">
+      {/* Footer with glass effect */}
+      <footer className="relative p-8 text-sm opacity-50 border-t border-zinc-800 backdrop-blur-sm bg-black/20">
         <p>© 2023 Portfolio. All rights reserved.</p>
       </footer>
     </div>
