@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import FixedBlurEffect from "./components/FixedBlurEffect";
 import LanguageLoader from "./components/LanguageLoader";
+import { SmoothScrollProvider } from "./components/SmoothScrollProvider";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +23,7 @@ const App = () => {
         <Sonner />
         <LanguageLoader onFinished={() => setIsLoading(false)} />
         {!isLoading && (
-          <>
+          <SmoothScrollProvider>
             <FixedBlurEffect />
             <BrowserRouter>
               <Routes>
@@ -31,7 +32,7 @@ const App = () => {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
-          </>
+          </SmoothScrollProvider>
         )}
       </TooltipProvider>
     </QueryClientProvider>
