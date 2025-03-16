@@ -36,11 +36,16 @@ export const LocomotiveScrollProvider: React.FC<LocomotiveScrollProviderProps> =
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // @ts-ignore - LocomotiveScroll types are not perfect
+    // Create a new LocomotiveScroll instance
+    // We need to pass the element and options separately instead of in an object
     scrollRef.current = new LocomotiveScroll({
       el: containerRef.current,
-      ...options,
-    });
+      smooth: options.smooth,
+      lerp: options.lerp,
+      smartphone: options.smartphone,
+      tablet: options.tablet,
+      ...options
+    } as any);
 
     setScroll(scrollRef.current);
 
@@ -55,7 +60,7 @@ export const LocomotiveScrollProvider: React.FC<LocomotiveScrollProviderProps> =
 
   useEffect(() => {
     if (scroll) {
-      // @ts-ignore - update method exists but is not in the types
+      // Update the scroll instance when watched values change
       scroll.update();
     }
   }, [scroll, watch]);
