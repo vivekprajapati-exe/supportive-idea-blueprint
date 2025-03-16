@@ -1,8 +1,8 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { LocomotiveScrollProvider } from 'locomotive-scroll';
+import { LocomotiveScrollProvider, LocomotiveScrollContext } from '../components/LocomotiveScrollProvider';
 
 const Index = () => {
   const [currentProject, setCurrentProject] = useState<number | null>(null);
@@ -103,26 +103,55 @@ const Index = () => {
         {/* Header */}
         <header className="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-30">
           <div className="text-lg">Portfolio</div>
-          <nav className="hidden md:block">
-            <ul className="flex space-x-8">
-              <li><a href="#work" className="hover:opacity-50 transition-opacity duration-300">Work</a></li>
-              <li><a href="#about" className="hover:opacity-50 transition-opacity duration-300">About</a></li>
-              <li><a href="#contact" className="hover:opacity-50 transition-opacity duration-300">Contact</a></li>
+          <nav className="hidden md:flex">
+            <ul className="flex space-x-10">
+              <li><a href="#work" className="hover:opacity-50 transition-opacity duration-300 tracking-wider">WORK</a></li>
+              <li><a href="#about" className="hover:opacity-50 transition-opacity duration-300 tracking-wider">ABOUT</a></li>
+              <li><a href="#contact" className="hover:opacity-50 transition-opacity duration-300 tracking-wider">SERVICES</a></li>
+              <li><a href="#contact" className="hover:opacity-50 transition-opacity duration-300 tracking-wider">TESTIMONIALS</a></li>
+              <li><a href="#contact" className="hover:opacity-50 transition-opacity duration-300 tracking-wider">CONNECT</a></li>
             </ul>
           </nav>
         </header>
         
         {/* Main Content */}
-        <main className="flex-1 pt-32 px-8 pb-20" data-scroll-section>
-          {/* Hero Section */}
-          <section className="mb-32" data-scroll>
-            <h1 className="text-5xl md:text-7xl font-light max-w-4xl leading-tight" data-scroll data-scroll-speed="1">
-              Editor & Motion Designer based in New York
-            </h1>
+        <main className="flex-1 pt-0 pb-20" data-scroll-section>
+          {/* Hero Section - New Style */}
+          <section className="h-screen relative overflow-hidden" data-scroll data-scroll-speed="0.5">
+            {/* Black to orange gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-[#FF4500] opacity-90 z-0"></div>
+            
+            {/* Big Name/Logo */}
+            <div className="absolute top-1/4 left-0 w-full z-10">
+              <h1 className="text-[15vw] font-bold leading-none tracking-tighter text-center">
+                CHARLIE<br/>OSBORNE
+              </h1>
+            </div>
+            
+            {/* Bottom tagline */}
+            <div className="absolute bottom-36 left-0 w-full px-8 md:px-16 z-10" data-scroll data-scroll-speed="1">
+              <div className="max-w-5xl mx-auto">
+                <h2 className="text-3xl md:text-5xl font-light leading-tight">
+                  Crafting Digital <span className="italic">Designs</span> that<br/>
+                  Elevate SaaS & AI Innovators
+                </h2>
+                <div className="flex space-x-16 mt-4 text-sm md:text-base opacity-80">
+                  <span>©2023</span>
+                  <span>BASED IN UK</span>
+                  <span>DESIGNER</span>
+                </div>
+              </div>
+            </div>
           </section>
           
+          {/* Glass effect transition element */}
+          <div className="relative h-40 md:h-60 mb-16" data-scroll data-scroll-speed="0.5">
+            <div className="absolute inset-0 bg-gradient-to-b from-[#FF4500]/50 via-transparent to-transparent z-10" />
+            <div className="absolute inset-0 backdrop-blur-[10px] bg-black/30 rounded-t-[40px] transform translate-y-1/3 z-0" />
+          </div>
+          
           {/* Project List */}
-          <section id="work" className="mb-32" data-scroll>
+          <section id="work" className="mb-32 px-8" data-scroll>
             <h2 className="text-2xl mb-10 opacity-50" data-scroll data-scroll-speed="0.5">Selected Work</h2>
             
             <div className="border-t border-zinc-800">
@@ -156,7 +185,7 @@ const Index = () => {
             <div className="absolute inset-0 backdrop-blur-[10px] bg-black/30 rounded-t-[40px] transform translate-y-1/3 z-0" />
           </div>
           
-          {/* New About Section with Animations */}
+          {/* About Section with Animations */}
           <section 
             id="about" 
             ref={aboutSectionRef} 
@@ -176,7 +205,7 @@ const Index = () => {
             </div>
 
             {/* Content that scrolls with image and text transitions */}
-            <div className="py-32 max-w-4xl mx-auto">
+            <div className="py-32 max-w-4xl mx-auto px-8">
               {/* First text block before image appears */}
               <div className="mb-32" data-scroll data-scroll-speed="0.5">
                 <p className="text-2xl leading-relaxed backdrop-blur-sm p-4 rounded-lg bg-black/20" data-scroll data-scroll-speed="1">
@@ -246,7 +275,7 @@ const Index = () => {
           </div>
           
           {/* Contact Section */}
-          <section id="contact" className="relative z-20 backdrop-blur-sm bg-black/40 p-8 rounded-lg" data-scroll data-scroll-speed="0.75">
+          <section id="contact" className="relative z-20 backdrop-blur-sm bg-black/40 p-8 rounded-lg mx-8" data-scroll data-scroll-speed="0.75">
             <h2 className="text-2xl mb-10 opacity-50" data-scroll data-scroll-speed="1">Contact</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
               <div data-scroll data-scroll-speed="0.5">

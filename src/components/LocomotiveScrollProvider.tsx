@@ -13,7 +13,13 @@ export const LocomotiveScrollContext = createContext<LocomotiveScrollContextType
 
 interface LocomotiveScrollProviderProps {
   children: React.ReactNode;
-  options: LocomotiveScroll.InstanceOptions;
+  options: {
+    smooth?: boolean;
+    lerp?: number;
+    smartphone?: { smooth?: boolean };
+    tablet?: { smooth?: boolean };
+    [key: string]: any;
+  };
   watch?: any[];
   containerRef: React.RefObject<HTMLDivElement>;
 }
@@ -30,6 +36,7 @@ export const LocomotiveScrollProvider: React.FC<LocomotiveScrollProviderProps> =
   useEffect(() => {
     if (!containerRef.current) return;
 
+    // @ts-ignore - LocomotiveScroll types are not perfect
     scrollRef.current = new LocomotiveScroll({
       el: containerRef.current,
       ...options,
@@ -48,6 +55,7 @@ export const LocomotiveScrollProvider: React.FC<LocomotiveScrollProviderProps> =
 
   useEffect(() => {
     if (scroll) {
+      // @ts-ignore - update method exists but is not in the types
       scroll.update();
     }
   }, [scroll, watch]);
