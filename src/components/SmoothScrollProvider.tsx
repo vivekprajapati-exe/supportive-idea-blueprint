@@ -1,5 +1,5 @@
 
-import React, { createContext, useEffect, useRef } from 'react';
+import React, { createContext, useContext } from 'react';
 
 interface SmoothScrollContextType {
   scrollTo: (selector: string) => void;
@@ -33,3 +33,5 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({
     </SmoothScrollContext.Provider>
   );
 };
+
+export const useSmoothScroll = () => useContext(SmoothScrollContext);
