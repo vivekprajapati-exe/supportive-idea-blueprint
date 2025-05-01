@@ -6,6 +6,7 @@ import { SmoothScrollContext } from '../components/SmoothScrollProvider';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ServicesSection from '../components/ServicesSection';
+import VideoSlider from '../components/VideoSlider';
 import { Mail, ArrowRight } from "lucide-react";
 
 const Index = () => {
@@ -33,35 +34,40 @@ const Index = () => {
       title: "SONY",
       category: "Commercial",
       year: "2023",
-      image: "https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3"
+      image: "https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3",
+      videoUrl: "https://player.vimeo.com/video/367686173?background=1"
     },
     {
       id: 2,
       title: "NIKE",
       category: "Brand",
       year: "2023",
-      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3"
+      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3",
+      videoUrl: "https://player.vimeo.com/video/429388383?background=1"
     },
     {
       id: 3,
       title: "ADIDAS",
       category: "Commercial",
       year: "2022",
-      image: "https://images.unsplash.com/photo-1593121925328-369cc8459c08?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3"
+      image: "https://images.unsplash.com/photo-1593121925328-369cc8459c08?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3",
+      videoUrl: "https://player.vimeo.com/video/306926352?background=1"
     },
     {
       id: 4,
       title: "APPLE",
       category: "Product",
       year: "2022",
-      image: "https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=2600&auto=format&fit=crop&ixlib=rb-4.0.3"
+      image: "https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=2600&auto=format&fit=crop&ixlib=rb-4.0.3",
+      videoUrl: "https://player.vimeo.com/video/538379176?background=1"
     },
     {
       id: 5,
       title: "PUMA",
       category: "Commercial",
       year: "2021",
-      image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3"
+      image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3",
+      videoUrl: "https://player.vimeo.com/video/370244751?background=1"
     }
   ];
 
@@ -164,31 +170,11 @@ const Index = () => {
           <div className="absolute inset-0 backdrop-blur-[10px] bg-black/30 rounded-t-[40px] transform translate-y-1/3 z-0" />
         </div>
         
-        {/* Project List */}
+        {/* Project List - Replaced with VideoSlider */}
         <section id="work" className="mb-32 px-8">
           <h2 className="text-2xl mb-10 opacity-50 font-display tracking-wide">Selected Work</h2>
           
-          <div className="border-t border-zinc-800">
-            {projects.map((project, index) => (
-              <motion.div 
-                key={project.id}
-                className="py-8 border-b border-zinc-800 flex flex-col md:flex-row md:items-center justify-between cursor-pointer"
-                onMouseEnter={() => setCurrentProject(index)}
-                onMouseLeave={() => setCurrentProject(null)}
-                whileHover={{ x: 20 }}
-                transition={{ type: "tween", duration: 0.2 }}
-              >
-                <div className="flex items-center space-x-4">
-                  <span className="text-zinc-500 text-sm w-6">{project.id.toString().padStart(2, '0')}</span>
-                  <h3 className="text-3xl md:text-4xl font-display font-medium">{project.title}</h3>
-                </div>
-                <div className="flex space-x-12 mt-4 md:mt-0">
-                  <span className="text-zinc-400 font-sans">{project.category}</span>
-                  <span className="text-zinc-400 font-sans">{project.year}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <VideoSlider projects={projects} />
         </section>
         
         {/* Glass effect transition element between sections */}
@@ -200,11 +186,11 @@ const Index = () => {
         {/* ServicesSection Component */}
         <ServicesSection />
         
-        {/* About Section with Animations */}
+        {/* About Section with Animations - Text color fixed to white */}
         <section 
           id="about" 
           ref={aboutSectionRef} 
-          className="relative z-20 mb-32 min-h-[150vh]"
+          className="relative z-20 mb-32 min-h-[150vh] text-white"
         >
           {/* Big centered about text that gets fixed */}
           <div className="h-screen flex items-center justify-center sticky top-0">
@@ -232,7 +218,7 @@ const Index = () => {
             >
               <Card className="backdrop-blur-sm bg-black/20 border-zinc-800">
                 <CardContent className="p-6">
-                  <p className="text-2xl leading-relaxed font-sans">
+                  <p className="text-2xl leading-relaxed font-sans text-white">
                     I am a freelance editor with over 8 years of experience creating compelling visual content for luxury brands and premium clients worldwide.
                   </p>
                 </CardContent>
@@ -266,14 +252,14 @@ const Index = () => {
               >
                 <Card className="backdrop-blur-sm bg-black/20 border-zinc-800 mb-8">
                   <CardContent className="p-6">
-                    <p className="text-xl leading-relaxed font-sans">
+                    <p className="text-xl leading-relaxed font-sans text-white">
                       My work focuses on high-end editing with meticulous attention to detail, creating premium visual experiences that elevate brands.
                     </p>
                   </CardContent>
                 </Card>
                 <Card className="backdrop-blur-sm bg-black/20 border-zinc-800">
                   <CardContent className="p-6">
-                    <p className="text-xl leading-relaxed font-sans">
+                    <p className="text-xl leading-relaxed font-sans text-white">
                       Each project receives personalized care and creative direction to ensure exceptional results that exceed client expectations.
                     </p>
                   </CardContent>
@@ -305,14 +291,14 @@ const Index = () => {
               >
                 <Card className="backdrop-blur-sm bg-black/20 border-zinc-800 mb-8">
                   <CardContent className="p-6">
-                    <p className="text-xl leading-relaxed font-sans">
+                    <p className="text-xl leading-relaxed font-sans text-white">
                       Specializing in luxury commercials, high-end brand films, and premium product showcases, I deliver sophisticated edits that resonate with discerning audiences.
                     </p>
                   </CardContent>
                 </Card>
                 <Card className="backdrop-blur-sm bg-black/20 border-zinc-800">
                   <CardContent className="p-6">
-                    <p className="text-xl leading-relaxed font-sans">
+                    <p className="text-xl leading-relaxed font-sans text-white">
                       My workflow combines technical mastery with artistic vision to craft polished, elegant edits that tell compelling brand stories.
                     </p>
                   </CardContent>
