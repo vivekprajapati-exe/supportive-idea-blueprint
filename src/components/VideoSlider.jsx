@@ -103,7 +103,7 @@ const VideoSlider = ({ projects }) => {
                   
                   {/* Project details */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
-                    <h3 className="text-3xl font-display font-bold mb-1">{project.title}</h3>
+                    <h3 className="text-3xl font-display font-bold mb-1 text-white">{project.title}</h3>
                     <div className="flex items-center text-sm font-sans text-white/70 space-x-4">
                       <span className="flex items-center"><Film className="mr-1 h-4 w-4" /> {project.category}</span>
                       <span>{project.year}</span>
@@ -131,7 +131,7 @@ const VideoSlider = ({ projects }) => {
       >
         <a 
           href="mailto:vivek.perspectivee@gmail.com" 
-          className="group flex items-center space-x-2 bg-white/10 hover:bg-white/20 font-display text-lg px-8 py-4 rounded-full backdrop-blur-sm border border-white/20 transition-all duration-300"
+          className="group flex items-center space-x-2 bg-white/10 hover:bg-white/20 font-display text-lg px-8 py-4 rounded-full backdrop-blur-sm border border-white/20 transition-all duration-300 text-white"
         >
           <span>Hire me for your next project</span>
           <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
