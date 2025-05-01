@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,7 @@ import { SmoothScrollContext } from '../components/SmoothScrollProvider';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ServicesSection from '../components/ServicesSection';
+import { Mail, ArrowRight } from "lucide-react";
 
 const Index = () => {
   const [currentProject, setCurrentProject] = useState(null);
@@ -66,7 +68,7 @@ const Index = () => {
   const { scrollTo } = useContext(SmoothScrollContext);
 
   return (
-    <div className="min-h-screen bg-black text-white font-light flex flex-col">
+    <div className="min-h-screen bg-black text-white font-sans flex flex-col">
       {/* Custom cursor follower */}
       {currentProject !== null && (
         <motion.div 
@@ -89,55 +91,70 @@ const Index = () => {
       
       {/* Header */}
       <header className="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-30">
-        <div className="text-lg">Portfolio</div>
+        <div className="text-lg font-display font-medium tracking-wide">Portfolio</div>
         <nav className="hidden md:flex">
           <ul className="flex space-x-10">
-            <li><Button variant="link" onClick={() => scrollTo('#work')} className="text-white hover:text-white/80">WORK</Button></li>
-            <li><Button variant="link" onClick={() => scrollTo('#about')} className="text-white hover:text-white/80">ABOUT</Button></li>
-            <li><Button variant="link" onClick={() => scrollTo('#services')} className="text-white hover:text-white/80">SERVICES</Button></li>
-            <li><Button variant="link" onClick={() => scrollTo('#testimonials')} className="text-white hover:text-white/80">TESTIMONIALS</Button></li>
-            <li><Button variant="link" onClick={() => scrollTo('#contact')} className="text-white hover:text-white/80">CONNECT</Button></li>
+            <li><Button variant="link" onClick={() => scrollTo('#work')} className="text-white hover:text-white/80 font-sans font-medium">WORK</Button></li>
+            <li><Button variant="link" onClick={() => scrollTo('#about')} className="text-white hover:text-white/80 font-sans font-medium">ABOUT</Button></li>
+            <li><Button variant="link" onClick={() => scrollTo('#services')} className="text-white hover:text-white/80 font-sans font-medium">SERVICES</Button></li>
+            <li><Button variant="link" onClick={() => scrollTo('#testimonials')} className="text-white hover:text-white/80 font-sans font-medium">TESTIMONIALS</Button></li>
+            <li><Button variant="link" onClick={() => scrollTo('#contact')} className="text-white hover:text-white/80 font-sans font-medium">CONNECT</Button></li>
           </ul>
         </nav>
       </header>
       
       {/* Main Content */}
       <main className="flex-1 pt-0 pb-20">
-        {/* Hero Section - New Style */}
-        <section className="h-screen relative overflow-hidden">
+        {/* Hero Section - Updated Style */}
+        <section className="h-screen relative overflow-hidden flex items-center">
           {/* Black to orange gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-[#FF4500] opacity-90 z-0"></div>
           
-          {/* Big Name/Logo */}
-          <div className="absolute top-1/4 left-0 w-full z-10">
-            <motion.h1 
-              className="text-[15vw] font-bold leading-none tracking-tighter text-center"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              CHARLIE<br/>OSBORNE
-            </motion.h1>
-          </div>
-          
-          {/* Bottom tagline */}
-          <div className="absolute bottom-36 left-0 w-full px-8 md:px-16 z-10">
-            <motion.div 
-              className="max-w-5xl mx-auto"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            >
-              <h2 className="text-3xl md:text-5xl font-light leading-tight">
-                Crafting Digital <span className="italic">Designs</span> that<br/>
-                Elevate SaaS & AI Innovators
-              </h2>
-              <div className="flex space-x-16 mt-4 text-sm md:text-base opacity-80">
+          <div className="container mx-auto px-8 z-10 relative">
+            {/* Name and Tagline */}
+            <div className="max-w-4xl">
+              <motion.h1 
+                className="text-7xl md:text-8xl font-display font-bold leading-none tracking-tight mb-6"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                CHARLIE<br/>OSBORNE
+              </motion.h1>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              >
+                <p className="text-2xl md:text-3xl font-sans font-light leading-tight mb-8 max-w-2xl">
+                  Delivering <span className="font-medium">premium editing services</span> for clients who demand exceptional quality and visual perfection.
+                </p>
+              </motion.div>
+              
+              {/* Call to Action */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+              >
+                <a 
+                  href="mailto:vivek.perspectivee@gmail.com" 
+                  className="group inline-flex items-center bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full backdrop-blur-sm border border-white/20 transition-all duration-300"
+                >
+                  <Mail className="mr-2 h-5 w-5" />
+                  <span className="font-medium">Contact Me</span>
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
+              </motion.div>
+              
+              {/* Bottom details */}
+              <div className="flex space-x-16 mt-12 text-sm md:text-base opacity-70 font-sans">
                 <span>©2023</span>
-                <span>BASED IN UK</span>
-                <span>DESIGNER</span>
+                <span>FREELANCE EDITOR</span>
+                <span>PREMIUM QUALITY</span>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
         
@@ -149,7 +166,7 @@ const Index = () => {
         
         {/* Project List */}
         <section id="work" className="mb-32 px-8">
-          <h2 className="text-2xl mb-10 opacity-50">Selected Work</h2>
+          <h2 className="text-2xl mb-10 opacity-50 font-display tracking-wide">Selected Work</h2>
           
           <div className="border-t border-zinc-800">
             {projects.map((project, index) => (
@@ -163,11 +180,11 @@ const Index = () => {
               >
                 <div className="flex items-center space-x-4">
                   <span className="text-zinc-500 text-sm w-6">{project.id.toString().padStart(2, '0')}</span>
-                  <h3 className="text-3xl md:text-4xl font-light">{project.title}</h3>
+                  <h3 className="text-3xl md:text-4xl font-display font-medium">{project.title}</h3>
                 </div>
                 <div className="flex space-x-12 mt-4 md:mt-0">
-                  <span className="text-zinc-400">{project.category}</span>
-                  <span className="text-zinc-400">{project.year}</span>
+                  <span className="text-zinc-400 font-sans">{project.category}</span>
+                  <span className="text-zinc-400 font-sans">{project.year}</span>
                 </div>
               </motion.div>
             ))}
@@ -193,7 +210,7 @@ const Index = () => {
           <div className="h-screen flex items-center justify-center sticky top-0">
             <motion.h2 
               ref={aboutTextRef}
-              className="text-7xl md:text-9xl font-light text-center opacity-90"
+              className="text-7xl md:text-9xl font-display font-bold text-center opacity-90"
               initial={{ opacity: 0, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, filter: "blur(0px)" }}
               transition={{ duration: 0.8 }}
@@ -215,8 +232,8 @@ const Index = () => {
             >
               <Card className="backdrop-blur-sm bg-black/20 border-zinc-800">
                 <CardContent className="p-6">
-                  <p className="text-2xl leading-relaxed">
-                    I am a video editor and motion designer with over 8 years of experience creating compelling visual content for brands and agencies worldwide.
+                  <p className="text-2xl leading-relaxed font-sans">
+                    I am a freelance editor with over 8 years of experience creating compelling visual content for luxury brands and premium clients worldwide.
                   </p>
                 </CardContent>
               </Card>
@@ -249,15 +266,15 @@ const Index = () => {
               >
                 <Card className="backdrop-blur-sm bg-black/20 border-zinc-800 mb-8">
                   <CardContent className="p-6">
-                    <p className="text-xl leading-relaxed">
-                      My work focuses on storytelling through creative cutting, dynamic motion design, and visual effects.
+                    <p className="text-xl leading-relaxed font-sans">
+                      My work focuses on high-end editing with meticulous attention to detail, creating premium visual experiences that elevate brands.
                     </p>
                   </CardContent>
                 </Card>
                 <Card className="backdrop-blur-sm bg-black/20 border-zinc-800">
                   <CardContent className="p-6">
-                    <p className="text-xl leading-relaxed">
-                      Each project is an opportunity to create something unique that captures the essence of the brand.
+                    <p className="text-xl leading-relaxed font-sans">
+                      Each project receives personalized care and creative direction to ensure exceptional results that exceed client expectations.
                     </p>
                   </CardContent>
                 </Card>
@@ -288,15 +305,15 @@ const Index = () => {
               >
                 <Card className="backdrop-blur-sm bg-black/20 border-zinc-800 mb-8">
                   <CardContent className="p-6">
-                    <p className="text-xl leading-relaxed">
-                      Specializing in commercials, brand films, and music videos, I bring a unique perspective to each project while maintaining the client's vision and brand identity.
+                    <p className="text-xl leading-relaxed font-sans">
+                      Specializing in luxury commercials, high-end brand films, and premium product showcases, I deliver sophisticated edits that resonate with discerning audiences.
                     </p>
                   </CardContent>
                 </Card>
                 <Card className="backdrop-blur-sm bg-black/20 border-zinc-800">
                   <CardContent className="p-6">
-                    <p className="text-xl leading-relaxed">
-                      My workflow combines technical expertise with artistic vision to deliver exceptional results that exceed expectations.
+                    <p className="text-xl leading-relaxed font-sans">
+                      My workflow combines technical mastery with artistic vision to craft polished, elegant edits that tell compelling brand stories.
                     </p>
                   </CardContent>
                 </Card>
@@ -315,7 +332,7 @@ const Index = () => {
         <section id="contact" className="relative z-20 px-8">
           <Card className="backdrop-blur-sm bg-black/40 border-zinc-800">
             <CardContent className="p-8">
-              <h2 className="text-2xl mb-10 opacity-50">Contact</h2>
+              <h2 className="text-2xl mb-10 opacity-70 font-display tracking-wide">Get in Touch</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
@@ -323,8 +340,8 @@ const Index = () => {
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-lg opacity-50 mb-3">Email</h3>
-                  <a href="mailto:hello@portfolio.com" className="text-xl hover:underline">hello@portfolio.com</a>
+                  <h3 className="text-lg opacity-50 mb-3 font-sans">Email</h3>
+                  <a href="mailto:vivek.perspectivee@gmail.com" className="text-xl hover:underline font-display">vivek.perspectivee@gmail.com</a>
                 </motion.div>
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
@@ -332,11 +349,11 @@ const Index = () => {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-lg opacity-50 mb-3">Social</h3>
+                  <h3 className="text-lg opacity-50 mb-3 font-sans">Social</h3>
                   <div className="flex flex-col space-y-3">
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:underline">Instagram</a>
-                    <a href="https://vimeo.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:underline">Vimeo</a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:underline">LinkedIn</a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:underline font-display">Instagram</a>
+                    <a href="https://vimeo.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:underline font-display">Vimeo</a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:underline font-display">LinkedIn</a>
                   </div>
                 </motion.div>
               </div>
@@ -346,8 +363,8 @@ const Index = () => {
       </main>
       
       {/* Footer with glass effect */}
-      <footer className="p-8 text-sm opacity-50 border-t border-zinc-800 backdrop-blur-sm bg-black/20">
-        <p>© 2023 Portfolio. All rights reserved.</p>
+      <footer className="p-8 text-sm opacity-50 border-t border-zinc-800 backdrop-blur-sm bg-black/20 font-sans">
+        <p>© 2023 Premium Editing Services. All rights reserved.</p>
       </footer>
     </div>
   );

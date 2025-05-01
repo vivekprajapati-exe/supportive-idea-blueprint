@@ -11,6 +11,12 @@ import FixedBlurEffect from "./components/FixedBlurEffect";
 import LanguageLoader from "./components/LanguageLoader";
 import { SmoothScrollProvider } from "./components/SmoothScrollProvider";
 
+// Add Google Fonts
+const googleFontsLink = document.createElement('link');
+googleFontsLink.rel = 'stylesheet';
+googleFontsLink.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap';
+document.head.appendChild(googleFontsLink);
+
 const queryClient = new QueryClient();
 
 const App = () => {
